@@ -8,8 +8,8 @@ public class Screen extends JPanel implements Runnable {
 	public Thread thread = new Thread(this); 
 	
 	public static Image[] tileset_ground = new Image [100];
-	public static Image[] tileset_air = new Image [5];
-	public static Image[] tileset_res = new Image[100];
+	public static Image[] tileset_air = new Image [100];
+	public static Image[] tileset_res = new Image[5];
 	public static Image[] tileset_mob = new Image[100];
 	
 	public static boolean started = false;
