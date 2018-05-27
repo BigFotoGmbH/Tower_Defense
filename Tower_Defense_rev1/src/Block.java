@@ -79,7 +79,7 @@ public class Block extends Rectangle {
 			}
 			if(shoting) {  					// Schuss-Laserstrahl
 				g.setColor(new Color(255,255,0));
-				g.drawLine(x + (width/2), y + (height/2), Screen.mob[shotMob].x +  (Screen.mob[shotMob].width/2), Screen.mob[shotMob].x +  (Screen.mob[shotMob].height/2));
+				g.drawLine(x + (width/2), y + (height/2), Screen.mob[shotMob].x +  (Screen.mob[shotMob].width/2), Screen.mob[shotMob].y +  (Screen.mob[shotMob].height/2));
 			}	
 	}
 }

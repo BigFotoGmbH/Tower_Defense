@@ -115,9 +115,6 @@ public class Screen extends JPanel implements Runnable {
 			}
 		}
 		
-		
-		
-		
 		store.draw(g);			//zeichnet Shop Leiste
 		
 		if(health < 1) {
