@@ -21,6 +21,7 @@ public class Block extends Rectangle {
 		g.drawImage(Screen.tileset_ground[groundID], x, y, width, height, null);
 	
 		if(airID != Values.airAir) {
+			//TODO Hardcode
 		g.drawImage(Screen.tileset_air[airID], x, y, width, height, null);	
 		}
 	}
