@@ -52,13 +52,7 @@ public class Screen extends JPanel implements Runnable {
 		}
 	}
 	
-	public void define() {
-		
-		if(started = false) {
-			thread.start();
-			started = true;	
-		}
-		
+	public void define() {		
 		room = new Room();
 		save = new Save();
 		store = new Store();
@@ -87,8 +81,15 @@ public class Screen extends JPanel implements Runnable {
 		tileset_mob[0] = new ImageIcon("res/mob.png").getImage();
 		
 		save.loadSave(new File("Save/Mission" + level + ".sbm"));  //lädt level
+		
 		//Erzwinge neu zeichnen
 		repaint();
+		
+		//Starte Thread wenn nicht bereits laufend
+		if(started == false) {
+			thread.start();
+			started = true;	
+		}
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -158,8 +159,9 @@ public class Screen extends JPanel implements Runnable {
 	
 
 	public void run() {                         // !!!RUN!!!
+		System.out.println("Started Physics Thread");
 		while(true) { 
-			if(isFirst && health > 0 && !isWin) {
+			if(health > 0 && !isWin) {
 				room.physic();
 				mobSpawner();
 				for(int i=0;i<mob.length;i++) {
