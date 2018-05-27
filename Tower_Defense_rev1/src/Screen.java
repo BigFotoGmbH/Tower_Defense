@@ -12,7 +12,7 @@ public class Screen extends JPanel implements Runnable {
 	public static Image[] tileset_ground = new Image [100];
 	public static Image[] tileset_air = new Image [3]; //3 verschiedene Bilder
 	public static Image[] tileset_res = new Image[5];
-	public static Image[] tileset_mob = new Image[100];
+	public static Image[] tileset_mob = new Image[1]; //1 Mob
 	
 	public static boolean started = false;
 	public static boolean isFirst = true;
@@ -86,12 +86,6 @@ public class Screen extends JPanel implements Runnable {
 		tileset_mob[0] = new ImageIcon("res/mob.png").getImage();
 		
 		save.loadSave(new File("Save/Mission" + level + ".sbm"));  //lädt level
-		
-		
-		for(int i=0;i<mob.length;i++) {
-			mob[i] = new Mob();
-			
-		}
 		//Erzwinge neu zeichnen
 		repaint();
 	}
@@ -114,9 +108,9 @@ public class Screen extends JPanel implements Runnable {
 		room.draw(g); 			//zeichnet raum
 		
 		for(int i=0;i<mob.length;i++) {
-			//if(mob[i].inGame) {
+			if(mob[i].inGame) {
 				mob[i].draw(g);
-			//}
+			}
 		}
 		
 		

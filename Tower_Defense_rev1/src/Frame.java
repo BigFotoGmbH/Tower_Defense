@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
+@SuppressWarnings("serial")
 public class Frame extends JFrame {
 	public static String title = "Tower Defence Xtreme";
 	public static Dimension size = new Dimension(1280, 720);
@@ -19,10 +20,10 @@ public class Frame extends JFrame {
 		Screen screen = new Screen(this);
 		//Entferne Windows Leiste: setUndecorated(true);
 		add(screen);
-		setVisible(true);
 	}
 	 
 	public static void main(String args[]) {
 			Frame frame = new Frame();
+			frame.setVisible(true);
 	}
 }

@@ -1,5 +1,6 @@
 import java.awt.*;
 
+@SuppressWarnings("serial")
 public class Mob extends Rectangle {
 	public int xC, yC;
 	public int health;
@@ -17,6 +18,7 @@ public class Mob extends Rectangle {
 	public boolean hasRight = false;
 	
 	public Mob() {
+		super(26, 26);
 	}
 	
 	public void spawnMob(int mobID)
@@ -134,23 +136,21 @@ public class Mob extends Rectangle {
 	}
 	
 	public boolean isDead() {
-		if(inGame) {
-			return false;
-		} else {
-			return true;
-		}
+		return !inGame;
 	}
 	
-	public void draw(Graphics g) {
-			g.drawImage(Screen.tileset_mob[mobID], x, y, width, height, null);
-			
-			g.setColor(new Color(180,50,50));
-			g.fillRect( x, y - (healthSpace + healthHeight), width, healthHeight);
-			
-			g.setColor(new Color(50,180,50));
-			g.fillRect( x, y - (healthSpace + healthHeight), health, healthHeight);
-			
-			g.setColor(new Color (0,0,0));
-			g.drawRect( x, y - (healthSpace + healthHeight), health - 1, healthHeight - 1);
+	public void draw(Graphics g)
+	{
+		// TODO Hardcode
+		g.drawImage(Screen.tileset_mob[0], x, y, width, height, null);
+
+		g.setColor(new Color(180, 50, 50));
+		g.fillRect(x, y - (healthSpace + healthHeight), width, healthHeight);
+
+		g.setColor(new Color(50, 180, 50));
+		g.fillRect(x, y - (healthSpace + healthHeight), health, healthHeight);
+
+		g.setColor(new Color(0, 0, 0));
+		g.drawRect(x, y - (healthSpace + healthHeight), health - 1, healthHeight - 1);
 	}
 }
