@@ -141,8 +141,7 @@ public class Mob extends Rectangle {
 	
 	public void draw(Graphics g)
 	{
-		// TODO Hardcode
-		g.drawImage(Screen.tileset_mob[0], x, y, width, height, null);
+		g.drawImage(Screen.tileset_mob[Values.mobGreeny], x, y, width, height, null);
 
 		g.setColor(new Color(180, 50, 50));
 		g.fillRect(x, y - (healthSpace + healthHeight), width, healthHeight);

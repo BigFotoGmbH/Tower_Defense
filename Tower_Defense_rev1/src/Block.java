@@ -1,4 +1,5 @@
 import java.awt.*;
+@SuppressWarnings("serial")
 public class Block extends Rectangle {
 	public Rectangle towerSquare;
 	public int towerSquareSize = 150;
@@ -21,8 +22,7 @@ public class Block extends Rectangle {
 		g.drawImage(Screen.tileset_ground[groundID], x, y, width, height, null);
 	
 		if(airID != Values.airAir) {
-			//TODO Hardcode
-		g.drawImage(Screen.tileset_air[airID], x, y, width, height, null);	
+			g.drawImage(Screen.tileset_air[airID], x, y, width, height, null);	
 		}
 	}
 	

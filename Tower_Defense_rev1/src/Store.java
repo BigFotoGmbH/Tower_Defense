@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.MouseEvent;
 
 public class Store
 {
@@ -29,7 +30,7 @@ public class Store
 
 	public void click(int mouseButton)
 	{
-		if (mouseButton == 1)
+		if (mouseButton == MouseEvent.BUTTON1)
 		{
 			for (int i = 0; i < button.length; i++)
 			{

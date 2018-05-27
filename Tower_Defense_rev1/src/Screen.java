@@ -4,6 +4,7 @@ import java.io.*;
 import java.awt.image.CropImageFilter;
 import java.awt.image.FilteredImageSource;
 
+@SuppressWarnings("serial")
 public class Screen extends JPanel implements Runnable {
 	public static Screen screen; 
 	
