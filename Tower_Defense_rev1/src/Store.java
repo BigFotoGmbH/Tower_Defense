@@ -94,15 +94,17 @@ public class Store
 	{
 		for (int i = 0; i < button.length; i++)
 		{
+			//Button hovered
 			if (button[i].contains(Screen.mse))
 			{
-
 				g.setColor(new Color(255, 255, 255, 100));
 				g.fillRect(button[i].x, button[i].y, button[i].width, button[i].height);
 			}
+			//Zeichne den Knopf
 			g.drawImage(Screen.tileset_res[0], button[i].x, button[i].y, button[i].width, button[i].height, null);
+			//Entscheide welches Item gekauft werden soll
 			if (buttonID[i] != Values.airAir)
-				g.drawImage(Screen.tileset_res[buttonID[i]], button[i].x + itemIn, button[i].y + itemIn,
+				g.drawImage(Screen.tileset_air[buttonID[i]], button[i].x + itemIn, button[i].y + itemIn,
 						button[i].width - (itemIn * 2), button[i].height - (itemIn * 2), null);
 			if (buttonPrice[i] > 0)
 			{

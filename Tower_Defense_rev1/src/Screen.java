@@ -5,10 +5,12 @@ import java.awt.image.CropImageFilter;
 import java.awt.image.FilteredImageSource;
 
 public class Screen extends JPanel implements Runnable {
+	public static Screen screen; 
+	
 	public Thread thread = new Thread(this); 
 	
 	public static Image[] tileset_ground = new Image [100];
-	public static Image[] tileset_air = new Image [100];
+	public static Image[] tileset_air = new Image [3]; //3 verschiedene Bilder
 	public static Image[] tileset_res = new Image[5];
 	public static Image[] tileset_mob = new Image[100];
 	
@@ -17,6 +19,7 @@ public class Screen extends JPanel implements Runnable {
 	public static boolean isDebug = true; //Tower Rahmen - Schussreichweite
 	public static boolean isWin = false;  //Win
 	
+	/**Mouse coursor click last pos*/
 	public static Point mse = new Point(0,0);
 	
 	public static int myWidth, myHeight;
@@ -30,14 +33,14 @@ public class Screen extends JPanel implements Runnable {
 	public static Save save;
 	public static Store store;
 	
-	public static Mob Mob[] = new Mob[100];
+	public static Mob mob[] = new Mob[100];
 	
 	
 	public Screen(Frame frame) { 
 		frame.addMouseListener(new KeyHandel());
 		frame.addMouseMotionListener(new KeyHandel());
 	
-		
+		screen = this;
 	}
 	
 	public static void hasWon() {
@@ -55,7 +58,6 @@ public class Screen extends JPanel implements Runnable {
 			started = true;	
 		}
 		
-		
 		room = new Room();
 		save = new Save();
 		store = new Store();
@@ -63,9 +65,9 @@ public class Screen extends JPanel implements Runnable {
 		coinage = 10;
 		health = 50;
 		
-		for(int i=0;i<Mob.length;i++) {
-			Mob[i] = new Mob();
-			Mob[i].spawnMob(0);
+		for(int i=0;i<mob.length;i++) {
+			mob[i] = new Mob();
+			mob[i].spawnMob(0);
 		}
 		
 		for(int i=0; i<tileset_ground.length; i++) {
@@ -86,10 +88,12 @@ public class Screen extends JPanel implements Runnable {
 		save.loadSave(new File("Save/Mission" + level + ".sbm"));  //lädt level
 		
 		
-		for(int i=0;i<Mob.length;i++) {
-			Mob[i] = new Mob();
+		for(int i=0;i<mob.length;i++) {
+			mob[i] = new Mob();
 			
 		}
+		//Erzwinge neu zeichnen
+		repaint();
 	}
 	
 	public void paintComponent(Graphics g) {
@@ -109,10 +113,10 @@ public class Screen extends JPanel implements Runnable {
 		
 		room.draw(g); 			//zeichnet raum
 		
-		for(int i=0;i<Mob.length;i++) {
-			if(Mob[i].inGame) {
-				Mob[i].draw(g);
-			}
+		for(int i=0;i<mob.length;i++) {
+			//if(mob[i].inGame) {
+				mob[i].draw(g);
+			//}
 		}
 		
 		
@@ -144,9 +148,9 @@ public class Screen extends JPanel implements Runnable {
 		public int spawnTime = 2000, spawnFrame = 0;
 		public void mobSpawner() {
 		    if(spawnFrame >= spawnTime) {
-		    	for(int i=0;i<Mob.length;i++) {
-		    		if(Mob[i].inGame) {
-		    			Mob[i].spawnMob(Values.mobGreeny);
+		    	for(int i=0;i<mob.length;i++) {
+		    		if(mob[i].inGame) {
+		    			mob[i].spawnMob(Values.mobGreeny);
 		    			break;
 		    		}
 		    	}
@@ -163,9 +167,9 @@ public class Screen extends JPanel implements Runnable {
 			if(isFirst && health > 0 && !isWin) {
 				room.physic();
 				mobSpawner();
-				for(int i=0;i<Mob.length;i++) {
-					if(Mob[i].inGame) {
-						Mob[i].physic();
+				for(int i=0;i<mob.length;i++) {
+					if(mob[i].inGame) {
+						mob[i].physic();
 					}
 				}
 			} else {

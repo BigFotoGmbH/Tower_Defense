@@ -27,7 +27,7 @@ public class Block extends Rectangle {
 	}
 	
 	public void physic() {
-		if(shotMob != -1 && towerSquare.intersects(Screen.Mob[shotMob])) {
+		if(shotMob != -1 && towerSquare.intersects(Screen.mob[shotMob])) {
 			shoting = true;
 		} else {
 			shoting = false;
@@ -36,9 +36,9 @@ public class Block extends Rectangle {
 		if(!shoting) {
 			shoting = false;
 				if(airID == Values.airTowerLaser) {
-					for(int i=0;i<Screen.Mob.length;i++) {
-						if(Screen.Mob[i].inGame) {
-							if(towerSquare.intersects(Screen.Mob[i])) {
+					for(int i=0;i<Screen.mob.length;i++) {
+						if(Screen.mob[i].inGame) {
+							if(towerSquare.intersects(Screen.mob[i])) {
 								shoting = true;
 								shotMob = i;
 							}
@@ -49,14 +49,14 @@ public class Block extends Rectangle {
 		
 		if(shoting) {						// Schießen
 			if(loseFrame >= loseTime) {
-				Screen.Mob[shotMob].loseHealth(1);
+				Screen.mob[shotMob].loseHealth(1);
 				
 				loseFrame = 0;
 			} else {
 				loseFrame += 1;
 			}
 			
-			if(Screen.Mob[shotMob].isDead()) {		// Mob tot -> Geld und Schuss Stop^^
+			if(Screen.mob[shotMob].isDead()) {		// Mob tot -> Geld und Schuss Stop^^
 				shoting = false;
 				shotMob = -1;
 				
@@ -79,7 +79,7 @@ public class Block extends Rectangle {
 			}
 			if(shoting) {  					// Schuss-Laserstrahl
 				g.setColor(new Color(255,255,0));
-				g.drawLine(x + (width/2), y + (height/2), Screen.Mob[shotMob].x +  (Screen.Mob[shotMob].width/2), Screen.Mob[shotMob].x +  (Screen.Mob[shotMob].height/2));
+				g.drawLine(x + (width/2), y + (height/2), Screen.mob[shotMob].x +  (Screen.mob[shotMob].width/2), Screen.mob[shotMob].x +  (Screen.mob[shotMob].height/2));
 			}	
 	}
 }
