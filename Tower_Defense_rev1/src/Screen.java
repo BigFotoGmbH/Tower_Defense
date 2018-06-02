@@ -142,7 +142,7 @@ public class Screen extends JPanel implements Runnable {
 		public void mobSpawner() {
 		    if(spawnFrame >= spawnTime) {
 		    	for(int i=0;i<mob.length;i++) {
-		    		if(mob[i].inGame) {
+		    		if(!mob[i].inGame) {							// ! hinzugefügt
 		    			mob[i].spawnMob(Values.mobGreeny);
 		    			break;
 		    		}
