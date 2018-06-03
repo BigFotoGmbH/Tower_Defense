@@ -45,12 +45,22 @@ public class Mob extends Rectangle {
 	}
 	
 	public void looseHealth() {
-		Screen.health -= 1;
+		Screen.health -= 10;
 	}
 	
-	public int walkFrame = 0, walkSpeed = 40;
+	public int walkFrame = 0, walkSpeed = 30;
 	public void physic() {
-			if(walkFrame >= walkSpeed) {
+			if(walkFrame >= walkSpeed) 
+			{
+				//Damage to the player
+				if(Screen.room.block[yC][xC].airID == Values.airCave)
+				{
+					looseHealth();
+					inGame = false;
+					direction = right;
+					mobWalk = 0;
+				}
+				
 				if(direction == right) {
 				x += 1;
 			 }else if (direction == upward){
