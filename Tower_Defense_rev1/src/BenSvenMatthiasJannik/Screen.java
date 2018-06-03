@@ -1,3 +1,4 @@
+package BenSvenMatthiasJannik;
 import java.awt.*;
 import javax.swing.*;
 import java.io.*;
@@ -43,8 +44,8 @@ public class Screen extends JPanel implements Runnable {
 	
 	
 	public Screen(Frame frame) { 
-		frame.addMouseListener(new KeyHandel());
-		frame.addMouseMotionListener(new KeyHandel());
+		addMouseListener(new KeyHandel());
+		addMouseMotionListener(new KeyHandel());
 	
 		screen = this;
 	}

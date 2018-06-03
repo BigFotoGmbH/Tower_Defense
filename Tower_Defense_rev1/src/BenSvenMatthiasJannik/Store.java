@@ -1,3 +1,4 @@
+package BenSvenMatthiasJannik;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
@@ -80,12 +81,10 @@ public class Store
 	{
 		for (int i = 0; i < button.length; i++)
 		{
-			button[i] = new Rectangle(
-					(Screen.myWidth / 2) - ((shopWidth * (buttonSize + cellSpace)) / 2)
-							+ ((buttonSize + cellSpace) * i),
-					(Screen.room.block[Screen.room.worldHeight - 1][0].y + Screen.room.blockSize + cellSpace
-							+ awayFromRoom),
-					buttonSize, buttonSize);
+			int width = (Screen.myWidth / 2) - ((shopWidth * (buttonSize + cellSpace)) / 2) + ((buttonSize + cellSpace) * i);
+			int height = Screen.room.block[Screen.room.worldHeight - 1][0].y + Screen.room.blockSize + cellSpace + awayFromRoom;
+			
+			button[i] = new Rectangle(width, height, buttonSize, buttonSize);
 		}
 		buttonHealth = new Rectangle(Screen.room.block[0][0].x - 1, button[0].y, iconSize, iconSize);
 		buttonCoins = new Rectangle(Screen.room.block[0][0].x - 1, button[0].y + button[0].height - iconSize, iconSize, iconSize);

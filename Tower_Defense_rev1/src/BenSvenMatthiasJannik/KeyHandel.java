@@ -1,3 +1,4 @@
+package BenSvenMatthiasJannik;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
@@ -11,7 +12,7 @@ public class KeyHandel implements MouseMotionListener, MouseListener
 	{
 		Screen.mse = e.getPoint();
 		//Screen.mse = new Point((e.getX()) + ((Frame.size.width - Screen.myWidth)/2), (e.getY() + ((Frame.size.height)-(Screen.myHeight)/2)));
-		//System.out.println("Click auf (" + Screen.mse.getX() + "|" + Screen.mse.getY() + ")"); // DEBUG
+		System.out.println("Click auf (" + Screen.mse.getX() + "|" + Screen.mse.getY() + ")"); // DEBUG
 		Screen.screen.repaint();
 		Screen.store.click(e.getButton());
 	}
