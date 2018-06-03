@@ -1,11 +1,12 @@
 package BenSvenMatthiasJannik;
+
 import java.io.*;
 import java.util.*;
 
-public class Save {
-	public void loadSave(File loadPath) {
+public class SaveLoader {
+	public void loadSave(InputStream inputStream) {
 		try {
-			Scanner loadScanner = new Scanner(loadPath);
+			Scanner loadScanner = new Scanner(inputStream);
 			
 			while(loadScanner.hasNext()) {
 				Screen.killsToWin = loadScanner.nextInt();

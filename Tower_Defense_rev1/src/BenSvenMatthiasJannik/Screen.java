@@ -1,9 +1,15 @@
 package BenSvenMatthiasJannik;
-import java.awt.*;
-import javax.swing.*;
-import java.io.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Point;
 import java.awt.image.CropImageFilter;
 import java.awt.image.FilteredImageSource;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
 public class Screen extends JPanel implements Runnable {
@@ -34,10 +40,8 @@ public class Screen extends JPanel implements Runnable {
 	public static int killed = 0, killsToWin = 0, level = 1, maxLevel = 3;
 	public static int winTime = 4000, winFrame = 0;
 	
-	
-	
 	public static Room room;
-	public static Save save;
+	public static SaveLoader save;
 	public static Store store;
 	
 	public static Mob mob[] = new Mob[100];
@@ -58,9 +62,10 @@ public class Screen extends JPanel implements Runnable {
 		}
 	}
 	
-	public void define() {		
+	public void define() {
+		try {
 		room = new Room();
-		save = new Save();
+		save = new SaveLoader();
 		store = new Store();
 		
 		coinage = 10;
@@ -74,21 +79,21 @@ public class Screen extends JPanel implements Runnable {
 		}
 		
 		for(int i=0; i<tileset_ground.length; i++) {
-			tileset_ground[i] = new ImageIcon("res/tileset_ground.png").getImage();         //Bild vom Boden wird geladen
+			tileset_ground[i] = ImageIO.read(Frame.class.getResourceAsStream("Res/tileset_ground.png"));         //Bild vom Boden wird geladen
 			tileset_ground[i] = createImage(new FilteredImageSource(tileset_ground[i].getSource(), new CropImageFilter(0, 26*i, 26, 26)));
 		}
 		for(int i=0; i<tileset_air.length; i++) {
-			tileset_air[i] = new ImageIcon("res/tileset_air.png").getImage();         //Bild vom Himmel und Objekten wird geladen
+			tileset_air[i] = ImageIO.read(Frame.class.getResourceAsStream("Res/tileset_air.png"));         //Bild vom Himmel und Objekten wird geladen
 			tileset_air[i] = createImage(new FilteredImageSource(tileset_air[i].getSource(), new CropImageFilter(0, 26*i, 26, 26)));
 		}
 		
-		tileset_res[0] = new ImageIcon("res/cell.png").getImage();
-		tileset_res[1] = new ImageIcon("res/herz.png").getImage();
-		tileset_res[2] = new ImageIcon("res/coin.png").getImage();
+		tileset_res[0] = ImageIO.read(Frame.class.getResourceAsStream("Res/cell.png"));
+		tileset_res[1] = ImageIO.read(Frame.class.getResourceAsStream("Res/herz.png"));
+		tileset_res[2] = ImageIO.read(Frame.class.getResourceAsStream("Res/coin.png"));
 		
-		tileset_mob[0] = new ImageIcon("res/mob.png").getImage();
+		tileset_mob[0] = ImageIO.read(Frame.class.getResourceAsStream("Res/mob.png"));
 		
-		save.loadSave(new File("Save/Mission" + level + ".sbm"));  //lädt level
+		save.loadSave(Frame.class.getResourceAsStream("Save/Mission" + level + ".sbm"));  //lädt level
 		
 		//Erzwinge neu zeichnen
 		repaint();
@@ -97,6 +102,10 @@ public class Screen extends JPanel implements Runnable {
 		if(started == false) {
 			thread.start();
 			started = true;	
+		}
+		} catch (IOException e)
+		{
+			e.printStackTrace();
 		}
 	}
 	
