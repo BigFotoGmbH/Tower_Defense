@@ -144,7 +144,7 @@ public class Screen extends JPanel implements Runnable {
 		    	for(int i=0;i<mob.length;i++) {
 		    		if(!mob[i].inGame) {							// ! hinzugefügt TODO
 		    			mob[i].spawnMob(Values.mobGreeny);
-		    			//break;
+		    			break;
 		    		}
 		    	}
 		    	spawnFrame = 0;
