@@ -128,8 +128,8 @@ public class Screen extends JPanel implements Runnable {
 			g.setColor(new Color(240, 20,20 ,20));
 			g.fillRect(0, 0, myWidth, myHeight);
 			g.setColor(new Color (255, 255, 255));
-			g.setFont(new Font ("Courier New", Font.BOLD, 14));
-			g.drawString("Game Over", 10, 20);
+			g.setFont(new Font ("Courier New", Font.BOLD, 70));
+			g.drawString("Game Over", 150, 50);
 		}
 		
 		if(isWin) {				// Sieg Display
