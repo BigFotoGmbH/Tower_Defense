@@ -62,7 +62,7 @@ public class Screen extends JPanel implements Runnable {
 		
 		for(int i=0;i<mob.length;i++) {
 			mob[i] = new Mob();
-			mob[i].spawnMob(0);
+			//mob[i].spawnMob(0);
 		}
 		
 		for(int i=0; i<tileset_ground.length; i++) {
@@ -142,9 +142,9 @@ public class Screen extends JPanel implements Runnable {
 		public void mobSpawner() {
 		    if(spawnFrame >= spawnTime) {
 		    	for(int i=0;i<mob.length;i++) {
-		    		if(!mob[i].inGame) {							// ! hinzugefügt
+		    		if(!mob[i].inGame) {							// ! hinzugefügt TODO
 		    			mob[i].spawnMob(Values.mobGreeny);
-		    			break;
+		    			//break;
 		    		}
 		    	}
 		    	spawnFrame = 0;
