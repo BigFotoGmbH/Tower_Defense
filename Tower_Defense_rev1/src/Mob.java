@@ -48,7 +48,7 @@ public class Mob extends Rectangle {
 		Screen.health -= 10;
 	}
 	
-	public int walkFrame = 0, walkSpeed = 30;
+	public int walkFrame = 0, walkSpeed = 20;
 	public void physic() {
 			if(walkFrame >= walkSpeed) 
 			{

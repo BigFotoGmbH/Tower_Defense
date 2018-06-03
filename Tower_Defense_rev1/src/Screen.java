@@ -10,6 +10,11 @@ public class Screen extends JPanel implements Runnable {
 	
 	public Thread thread = new Thread(this); 
 	
+	public static final int SPAWNTIME = 3000;
+	
+	//Spawn timer
+	public int spawnTime = SPAWNTIME, spawnFrame = 0;
+	
 	public static Image[] tileset_ground = new Image [100];
 	public static Image[] tileset_air = new Image [3]; //3 verschiedene Bilder
 	public static Image[] tileset_res = new Image[5];
@@ -59,6 +64,8 @@ public class Screen extends JPanel implements Runnable {
 		
 		coinage = 10;
 		health = 50;
+		
+		spawnTime = SPAWNTIME;
 		
 		for(int i=0;i<mob.length;i++) {
 			mob[i] = new Mob();
@@ -138,21 +145,22 @@ public class Screen extends JPanel implements Runnable {
 		}
 	}
 	
-		public int spawnTime = 2000, spawnFrame = 0;
-		public void mobSpawner() {
-		    if(spawnFrame >= spawnTime) {
-		    	for(int i=0;i<mob.length;i++) {
-		    		if(!mob[i].inGame) {							// ! hinzugefügt TODO
-		    			mob[i].spawnMob(Values.mobGreeny);
-		    			break;
-		    		}
-		    	}
-		    	spawnFrame = 0;
-		    }else {
-		    	spawnFrame += 1;
-		    	
-		    }
-		}
+	public void mobSpawner() 
+	{
+	    if(spawnFrame >= spawnTime) {
+	    	for(int i=0;i<mob.length;i++) {
+	    		if(!mob[i].inGame) {							// ! hinzugefügt TODO
+	    			mob[i].spawnMob(Values.mobGreeny);
+	    			if(spawnTime > 800) spawnTime -= 100;
+	    			break;
+	    		}
+	    	}
+	    	spawnFrame = 0;
+	    }else {
+	    	spawnFrame += 1;
+	    	
+	    }
+	}
 	
 
 	public void run() {                         // !!!RUN!!!
