@@ -88,7 +88,7 @@ public class Mob extends Rectangle {
 						
 						if(!hasDownward) {
 							try {
-								if(Screen.room.block[yC-1][xC].groundID == Values.groundRoad) {
+								if(Screen.room.block[yC-1][xC].groundID == Values.groundRoad && !(direction == downward)) {
 									direction = upward;
 									
 								}
